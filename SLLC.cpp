@@ -110,8 +110,23 @@ void single_list::insert_begin(){		//case 1
 	cout<<"Element dimasukan pada awal"<<endl;
 
 }
+//case 2 
+void single_list::insert_last(){
+	int value;
+	cout<<"masukan value : ";cin>>value;
+	struct node *temp, *s;
+	temp = create_node(value);
+	s = start;
+	while (s->next != NULL){
+		s=s->next;
+	}
+	temp->next=NULL;
+	s->next = temp;
+	cout<<"elemen dimasukan pada akhir"<<endl;
+	
+} 
+//case 3
 
-//case 2 dan seterusnya
 
 
 
