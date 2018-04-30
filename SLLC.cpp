@@ -6,7 +6,7 @@ using namespace std;
 struct node{
 	int info;
 	struct node *next;
-}*start;
+}*start , *end;
 
 class single_list{
 	public:
@@ -14,11 +14,14 @@ class single_list{
 		void insert_begin();
 		void insert_pos();
 		void insert_last();
+	        void hapusawal();
+	        void hapusakhir();
 		void delete_pos();
 		void display();
 		
 		single_list(){
 			start = NULL;
+			end   = NULL;
 		}
 };
 
@@ -50,11 +53,11 @@ int main(){
 				break;
 			case 3:
 				cout<<"hapus node awal"<<endl;
-				//belom
+				s1.hapusawal();
 				break;
 			case 4:
 				cout<<"hapus node akhir"<<endl;
-				//belom juga
+				s1.hapusakhir();
 				break;
 			case 5:
 				cout<<"masukan node di posisi tertentu"<<endl;
@@ -122,11 +125,49 @@ void single_list::insert_last(){
 	}
 	temp->next=NULL;
 	s->next = temp;
-	cout<<"elemen dimasukan pada akhir"<<endl;
-	
+	cout<<"elemen dimasukan pada akhir"<<endl;	
 } 
-//case 3
 
+//case 3
+void single_list::hapusawal(){
+	struct node *hapus;
+     int d;
+     if (kosong()==0){
+          if(start!=end){
+           hapus = start;
+           d = hapus->info;
+           start = start->next;
+           delete hapus;
+          } else {
+           d = end->info;
+           start=end=NULL;
+          }
+   cout<<d<<" Terhapus"<<endl;
+     } else cout<<"Masih kosong\n";
+}
+
+//case 4
+void single_list::hapusakhir(){
+     struct node *bantu,*hapus;
+     int d;
+     if (kosong()==0){
+      bantu = start;
+          if(start!=end){
+               while(bantu->next!=end){
+                bantu = bantu->next;
+               }
+               hapus = end;
+               end=bantu;
+               d = hapus->info;
+               delete hapus;
+               end->next = NULL;
+            }else {
+            d = end->info;
+             start=end=NULL;
+            }
+      cout<<d<<" Terhapus\n"<<endl;
+     } else cout<<"Masih kosong\n";
+}	
 
 //case 5
 void single_list::insert_pos(){
@@ -199,8 +240,8 @@ void single_list::delete_pos(){
 
 
 
-
-void single_list::display(){			//case 7
+//case 7
+void single_list::display(){			
 	struct node *temp;
 	if (start==NULL) {
 		cout<<"list kosong"<<endl;
