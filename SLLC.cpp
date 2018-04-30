@@ -26,7 +26,7 @@ int main(){
 	int n, node, elemen, posisi, i;
 	single_list s1;
 	start=NULL;
-	while (1){
+	while (1){        //biar dia ngulang terus wktu selesai satu case, dibuat looping.
 		cout<<"1. masukan node di awal"<<endl;
 		cout<<"2. masukan node di akhir"<<endl;
 		cout<<"3. hapus node awal"<<endl;
