@@ -25,6 +25,11 @@ class single_list{
 		}
 };
 
+int kosong(){
+ if(start == NULL) return 1;
+ else return 0;
+}
+
 int main(){
 	int n, node, elemen, posisi, i;
 	single_list s1;
@@ -111,22 +116,29 @@ void single_list::insert_begin(){		//case 1
 		start->next = p;
 	}
 	cout<<"Element dimasukan pada awal"<<endl;
+	cout<<endl;
 
 }
 //case 2 
 void single_list::insert_last(){
-	int value;
-	cout<<"masukan value : ";cin>>value;
-	struct node *temp, *s;
-	temp = create_node(value);
-	s = start;
-	while (s->next != NULL){
-		s=s->next;
-	}
-	temp->next=NULL;
-	s->next = temp;
-	cout<<"elemen dimasukan pada akhir"<<endl;	
-} 
+ int databaru;
+ cout<<" Masukkan value: ";cin>>databaru;
+ struct node *baru,*bantu;
+ baru = new node;
+ baru->info = databaru;
+ baru->next = NULL;
+ if(kosong()==1){
+ start=baru;
+ end=baru;
+ end->next = NULL;
+ }
+ else {
+  end->next = baru;
+  end=baru;
+ }
+ cout<<"Data masuk\n"<<endl;
+	cout<<endl;
+}
 
 //case 3
 void single_list::hapusawal(){
@@ -143,6 +155,7 @@ void single_list::hapusawal(){
            start=end=NULL;
           }
    cout<<d<<" Terhapus"<<endl;
+	     cout<<endl;
      } else cout<<"Masih kosong\n";
 }
 
