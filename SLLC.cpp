@@ -26,7 +26,7 @@ int main(){
 	int n, node, elemen, posisi, i;
 	single_list s1;
 	start=NULL;
-	while (1){        //biar dia ngulang terus wktu selesai satu case, dibuat looping.
+	while (1){
 		cout<<"1. masukan node di awal"<<endl;
 		cout<<"2. masukan node di akhir"<<endl;
 		cout<<"3. hapus node awal"<<endl;
@@ -81,3 +81,53 @@ int main(){
 }
 
 //isi dari sini
+node *single_list::create_node(int value){
+	struct node *temp, *s;
+	temp = new(struct node);
+	if (temp==NULL){
+		cout<<"Memory tidak di alokasikan"<<endl;
+		return 0;
+	} else {
+		temp->info = value;
+		temp->next = NULL;
+		return temp;
+	}
+	}
+
+void single_list::insert_begin(){		//case 1
+	int value;
+	cout<<"Masukan value: ";cin>>value;
+	struct node *temp, *p;
+	temp= create_node(value);
+	if (start==NULL){
+		start = temp;
+		start->next = NULL;
+	} else {
+		p = start;
+		start = temp;
+		start->next = p;
+	}
+	cout<<"Element dimasukan pada awal"<<endl;
+
+}
+
+//case 2 dan seterusnya
+
+
+
+
+void single_list::display(){			//case 7
+	struct node *temp;
+	if (start==NULL) {
+		cout<<"list kosong"<<endl;
+		return;
+	}
+	temp = start;
+	cout<<"elemen dari list nya adalah : "<<endl;
+	while (temp != NULL){
+		cout<<temp->info<<"->";
+		temp = temp->next;
+	}
+	cout<<"NULL"<<endl;
+	
+		}
