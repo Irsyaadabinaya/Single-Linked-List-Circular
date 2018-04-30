@@ -163,6 +163,38 @@ void single_list::insert_pos(){
 			cout<<"posisi terlalu jauh"<<endl;	
 		}	
 }
+//case 6
+void single_list::delete_pos(){
+	int pos, i, counter = 0;
+	if (start == NULL){
+		cout<<"list kosong"<<endl;
+		return;
+	}
+	cout<<"masukan posisi yang ingin dihapus";cin>>pos;
+	struct node *s, *ptr;
+	s = start;
+	if (pos==1){
+		start = s->next;
+	} else {
+		while (s!=NULL){
+			s=s->next;
+			counter++;
+		}
+		if (pos>0 &&pos <=counter){
+			s = start;
+			for (i=1; i<pos;i++){
+				ptr = s;
+				s=s->next;
+			}
+			ptr->next = s->next;
+		} else {
+			cout<<"posisi diluar jangkauan"<<endl;
+		}
+		free(s);
+		cout<<"elemen telah dihapus"<<endl;
+	}
+}
+
 
 
 
